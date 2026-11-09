@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#08090c">
+  <meta name="description" content="TIMEFLOW — A live dot-matrix digital clock displaying accurate Nigeria time.">
+
+  <title>TIMEFLOW — Nigeria Live Clock</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <header class="topbar">
+      <a href="#" class="brand">
+        <span class="brand-symbol">T</span>
+        <span>TIMEFLOW</span>
+      </a>
+
+      <div class="live-indicator">
+        <span class="live-dot"></span>
+        LIVE
+      </div>
+    </header>
+
+    <section class="clock-section">
+
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        PRECISION TIMEKEEPING
+        <span class="eyebrow-line"></span>
+      </div>
+
+      <h1>
+        Nigeria <span>Standard</span> Time
+      </h1>
+
+      <p class="subtitle">
+        A live digital clock synchronized to your device's system time.
+      </p>
+
+      <div class="clock-card">
+
+        <div class="clock-card-top">
+          <span class="clock-label">CURRENT LOCAL TIME</span>
+
+          <span class="timezone">
+            WAT <span>UTC+1</span>
+          </span>
+        </div>
+
+        <div class="clock-display" id="clock" aria-label="Current Nigeria time">
+          <span class="loading">INITIALIZING...</span>
+        </div>
+
+        <div class="clock-divider"></div>
+
+        <div class="clock-card-bottom">
+          <span id="date">Loading date...</span>
+          <span class="timezone-name">AFRICA/LAGOS</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="second-progress" class="progress-fill"></div>
+        </div>
+
+      </div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        <span id="sync-status">INITIALIZING CLOCK...</span>
+      </div>
+
+    </section>
+
+    <section class="information">
+
+      <div class="info-item">
+        <span class="info-heading">TIME ZONE</span>
+        <span class="info-value">West Africa Time</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-heading">UTC OFFSET</span>
+        <span class="info-value">UTC +01:00</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-heading">TIME FORMAT</span>
+        <span class="info-value">24-Hour Clock</span>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <div class="footer-line"></div>
+
+      <p>
+        DESIGNED FOR PRECISION.
+        <span>BUILT WITH PURPOSE.</span>
+      </p>
+
+      <span class="copyright">
+        © 2026 TIMEFLOW
+      </span>
+    </footer>
+
+  </main>
+
+  <script src="clock.js"></script>
+
+</body>
+  </html>
+  
