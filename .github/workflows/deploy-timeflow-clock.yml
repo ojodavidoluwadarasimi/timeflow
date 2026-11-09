@@ -1,4 +1,3 @@
-
 name: Deploy TIMEFLOW Clock
 
 on:
@@ -32,11 +31,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Enable and configure GitHub Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
-          token: ${{ secrets.PAGES_ENABLE_TOKEN }}
 
       - name: Upload clock files
         uses: actions/upload-pages-artifact@v4
@@ -46,3 +42,4 @@ jobs:
       - name: Deploy TIMEFLOW
         id: deployment
         uses: actions/deploy-pages@v4
+        
