@@ -1,0 +1,504 @@
+:root {
+  --background: #08090c;
+  --surface: #101116;
+  --surface-light: #15171e;
+  --gold: #e8ad4b;
+  --gold-light: #ffd58a;
+  --gold-dim: rgba(232, 173, 75, 0.12);
+  --text: #f4f0e8;
+  --muted: #777983;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(
+      ellipse at 50% 38%,
+      rgba(232, 173, 75, 0.055),
+      transparent 45%
+    ),
+    var(--background);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: min(100% - 40px, 1050px);
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.topbar {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.brand-symbol {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--background);
+  background: var(--gold);
+  border-radius: 8px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(89, 190, 130, 0.2);
+  border-radius: 30px;
+  color: #86d6a5;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.live-dot,
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #68d391;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(104, 211, 145, 0.6);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* MAIN CLOCK */
+
+.clock-section {
+  padding: 105px 0 70px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  color: var(--gold);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.eyebrow-line {
+  width: 27px;
+  height: 1px;
+  background: rgba(232, 173, 75, 0.4);
+}
+
+h1 {
+  margin-top: 23px;
+  font-size: clamp(30px, 5vw, 49px);
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: var(--gold);
+}
+
+.subtitle {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* CLOCK PANEL */
+
+.clock-card {
+  width: min(100%, 850px);
+  margin: 55px auto 0;
+  padding: 29px 32px 0;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      transparent 60%
+    ),
+    var(--surface);
+  border: 1px solid rgba(232, 173, 75, 0.17);
+  border-radius: 18px;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35),
+    0 0 65px rgba(232, 173, 75, 0.035);
+}
+
+.clock-card-top,
+.clock-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.clock-label,
+.timezone,
+.timezone-name {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.clock-label {
+  color: var(--muted);
+}
+
+.timezone {
+  color: var(--gold);
+}
+
+.timezone span {
+  margin-left: 5px;
+  color: var(--muted);
+}
+
+.clock-display {
+  min-height: 175px;
+  margin: 38px auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 1.5vw, 17px);
+  white-space: nowrap;
+}
+
+.digit {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.6vw, 6px);
+}
+
+.dot-row {
+  display: flex;
+  gap: clamp(3px, 0.6vw, 6px);
+}
+
+.dot {
+  width: clamp(5px, 1.15vw, 11px);
+  height: clamp(5px, 1.15vw, 11px);
+  border-radius: 50%;
+  background: rgba(232, 173, 75, 0.075);
+}
+
+.dot.active {
+  background: var(--gold);
+  box-shadow:
+    0 0 7px rgba(232, 173, 75, 0.55),
+    0 0 17px rgba(232, 173, 75, 0.2);
+}
+
+.colon {
+  color: var(--gold-light);
+  font-family: "DM Mono", monospace;
+  font-size: clamp(30px, 7vw, 65px);
+  font-weight: 400;
+  line-height: 1;
+  padding-bottom: 8px;
+  animation: colon-blink 1s steps(2, start) infinite;
+}
+
+@keyframes colon-blink {
+  to {
+    opacity: 0.35;
+  }
+}
+
+.loading {
+  color: var(--gold);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.clock-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.clock-card-bottom {
+  min-height: 65px;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+}
+
+.timezone-name {
+  color: var(--gold);
+  opacity: 0.75;
+}
+
+/* SECOND PROGRESS BAR */
+
+.progress-track {
+  height: 3px;
+  margin: 0 -32px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(232, 173, 75, 0.65);
+  transition: width 0.08s linear;
+}
+
+/* STATUS */
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+  color: #8a8c93;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+}
+
+/* INFORMATION */
+
+.information {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 15px auto 100px;
+  padding: 27px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+
+.info-item + .info-item {
+  border-left: 1px solid var(--border);
+}
+
+.info-heading {
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.info-value {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* FOOTER */
+
+.footer {
+  padding-bottom: 35px;
+  text-align: center;
+}
+
+.footer-line {
+  height: 1px;
+  margin-bottom: 25px;
+  background: var(--border);
+}
+
+.footer p {
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+}
+
+.footer p span {
+  color: var(--gold);
+}
+
+.copyright {
+  display: block;
+  margin-top: 13px;
+  color: #51535c;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+  .page {
+    width: min(100% - 30px, 1050px);
+  }
+
+  .topbar {
+    height: 72px;
+  }
+
+  .clock-section {
+    padding: 85px 0 55px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .subtitle {
+    max-width: 300px;
+    margin: 14px auto 0;
+    font-size: 12px;
+  }
+
+  .clock-card {
+    margin-top: 40px;
+    padding: 22px 16px 0;
+    border-radius: 13px;
+  }
+
+  .clock-display {
+    min-height: 115px;
+    margin: 34px auto 27px;
+    gap: clamp(3px, 1vw, 7px);
+  }
+
+  .dot {
+    width: clamp(4px, 1.25vw, 7px);
+    height: clamp(4px, 1.25vw, 7px);
+  }
+
+  .dot-row {
+    gap: clamp(2px, 0.5vw, 4px);
+  }
+
+  .digit {
+    gap: 3px;
+  }
+
+  .colon {
+    font-size: clamp(25px, 7vw, 36px);
+  }
+
+  .clock-label,
+  .timezone,
+  .timezone-name {
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .clock-card-bottom {
+    min-height: 58px;
+    font-size: 9px;
+  }
+
+  .progress-track {
+    margin: 0 -16px;
+  }
+
+  .information {
+    margin-bottom: 75px;
+    gap: 5px;
+  }
+
+  .info-heading {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+
+  .info-value {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .clock-card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .clock-display {
+    gap: 3px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .dot-row {
+    gap: 2px;
+  }
+
+  .progress-track {
+    margin: 0 -10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  }
+    
